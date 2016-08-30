@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+	<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1" />
+    <title>Neophyte - Contact Us</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/css/sticky-footer-navbar.css" rel="stylesheet">
+    <script src="/js/ie-emulation-modes-warning.js"></script>
+    
+    <link href=" /css/about-page.css" rel="stylesheet"/>
+    <link href=" /css/neo.css" rel="stylesheet"/>
+    <link href=" /css/contact_form.css" rel="stylesheet"/>
+    
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="/js/login-scripts.js"></script>
+</head>
+<body>
+	
+     <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Neophyte</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li class="active"><a href="/contact.html">Contact</a></li>
+            <li><a href="/subscribe.html">Subscribe</a></li>
+            <!--
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    
+   <div class="container">
+
+	 <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Thank you for Contacting NeoPhyte</h1>
+                <p class="lead">Someone will get back with you shortly, please feel free to check out our site.</p>
+                
+            </div>
+        </div>
+        
+     <div class="row">
+            <div class="col-lg-12 text-center">
+                <img src="img/contact_success.jpg"/>
+            </div>
+        </div>
+    
+</div>
+
+	</div>
+   
+   
+   
+	<script type="text/javascript">
+	$( document ).ready(function() {
+    // DOM ready
+
+    // Test data
+    /*
+     * To test the script you should discomment the function
+     * testLocalStorageData and refresh the page. The function
+     * will load some test data and the loadProfile
+     * will do the changes in the UI
+     */
+    // testLocalStorageData();
+    // Load profile if it exits
+    loadProfile();
+});
+
+/**
+ * Function that gets the data of the profile in case
+ * thar it has already saved in localstorage. Only the
+ * UI will be update in case that all data is available
+ *
+ * A not existing key in localstorage return null
+ *
+ */
+function getLocalProfile(callback){
+    var profileImgSrc      = localStorage.getItem("PROFILE_IMG_SRC");
+    var profileName        = localStorage.getItem("PROFILE_NAME");
+    var profileReAuthEmail = localStorage.getItem("PROFILE_REAUTH_EMAIL");
+
+    if(profileName !== null
+            && profileReAuthEmail !== null
+            && profileImgSrc !== null) {
+        callback(profileImgSrc, profileName, profileReAuthEmail);
+    }
+}
+
+/**
+ * Main function that load the profile if exists
+ * in localstorage
+ */
+function loadProfile() {
+    if(!supportsHTML5Storage()) { return false; }
+    // we have to provide to the callback the basic
+    // information to set the profile
+    getLocalProfile(function(profileImgSrc, profileName, profileReAuthEmail) {
+        //changes in the UI
+        $("#profile-img").attr("src",profileImgSrc);
+        $("#profile-name").html(profileName);
+        $("#reauth-email").html(profileReAuthEmail);
+        $("#inputEmail").hide();
+        $("#remember").hide();
+    });
+}
+
+/**
+ * function that checks if the browser supports HTML5
+ * local storage
+ *
+ * @returns {boolean}
+ */
+function supportsHTML5Storage() {
+    try {
+        return 'localStorage' in window && window['localStorage'] !== null;
+    } catch (e) {
+        return false;
+    }
+}
+
+/**
+ * Test data. This data will be safe by the web app
+ * in the first successful login of a auth user.
+ * To Test the scripts, delete the localstorage data
+ * and comment this call.
+ *
+ * @returns {boolean}
+ */
+function testLocalStorageData() {
+    if(!supportsHTML5Storage()) { return false; }
+    localStorage.setItem("PROFILE_IMG_SRC", "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" );
+    localStorage.setItem("PROFILE_NAME", "César Izquierdo Tello");
+    localStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
+}
+	</script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="/js/contact_form.js"></script>
+</body>
+</html>
